@@ -9,10 +9,39 @@ An interactive medical chat-bot based on Streamlit and Langchain Python Framewor
 
 ## Snapshots
 - English Chatbot
-- ![2023-06-17 (29)](https://github.com/ahmed-elsarta/lablab-Hackathon-project/assets/93448764/619e5903-bc2f-4056-a123-ae4e1b07ba24)
+![2023-06-17 (29)](https://github.com/ahmed-elsarta/lablab-Hackathon-project/assets/93448764/619e5903-bc2f-4056-a123-ae4e1b07ba24)
 
 - Arabic Chatbot
 ![2023-06-17 (27)](https://github.com/ahmed-elsarta/lablab-Hackathon-project/assets/93448764/83058dee-bb78-4929-9ca4-ca1be1f6a455)
+
+
+
+[Uplo{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "run streamlit streamlit_app.py"
+   ]
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "name": "python"
+  },
+  "orig_nbformat": 4
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
+ading run.ipynb…]()
+
+
+
+
 
 
 ## Frameworks Used
