@@ -18,6 +18,9 @@ An interactive medical chat-bot based on Streamlit and Langchain Python's Framew
 - Python's Streamlit Framework (UI)
 - Python's Langchain Framework (Chat-bot)
 
+## Note
+Don't forget to change the path of models present in the 'streamlit_app.py' file to match your own path
+
 ## Run The App
 - Download Python 3
 - Download VS code
