@@ -152,8 +152,11 @@ def data_extraction(input_text):
 # Check that all the required information was given
 def check_information(input_text, gender):
 
-    template = """You are an AI bot that would keep asking the person till he or she gives you all the required medical information only you 
+    template = """You are an AI bot that would keep asking the person till he or she gives you all the required medical information, you 
             can't help in any other field, the amount of information would differ whether it is a female or male gender.
+
+            You should respond to the user in the same language, for example if the user messages you in arabic, you should respond
+            in arabic not in another language.
     
             If the gender is male only and not female the following attributes shall be given in the input text and if one of them is not given for a male keep asking  for the missing
             attributes till they are given, 
