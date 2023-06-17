@@ -9,7 +9,7 @@ from kor.nodes import Object, Text, Number
 import json
 
 
-openai_api_key='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'
+openai_api_key = 'your_api_key'
 
 
 llm = ChatOpenAI(temperature=0.0, openai_api_key=openai_api_key)
