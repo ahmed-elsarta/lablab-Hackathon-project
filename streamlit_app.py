@@ -10,15 +10,17 @@ import app
 
 
 # Empty dictionary for extracted data
+# Keys for male data
 keys1 = ["age", "sex", "weight", "systolic_blood_pressure", "diastolic_blood_pressure", "cholesterol","glucose", 
          "smoker", "alcohol", "activity"]
-         
+# Keys for female data     
 keys2 = ["age", "systolic_blood_pressure", "diastolic_blood_pressure", "glucose", "temperature", "heart_rate"]
        
-
+# Convert the output of models to numbers so that the template of the llm understands 
 risk_dict = {"low risk": 0, "high risk": 1, "mid risk": 0.5}
 string_to_num_dict= {"yes": 1, "no": 0}
 
+# Global Variables to be used in the assessment
 male_data = {key: None for key in keys1}
 female_data = {key: None for key in keys2}
 output_dict = male_data
@@ -28,10 +30,10 @@ ai_response ="Hi"
 risk_val = 0
 
 
-# Load the saved model for cardiovascular disease from disk
+# Load the saved model for cardiovascular disease from disk (Replace with your path)
 model_male = joblib.load("D:/LangChain - Project/notebook/model.sav")
 
-# Load the saved model for maternal disease from disk
+# Load the saved model for maternal disease from disk (Replace with your path)
 model_female = joblib.load("D:/LangChain - Project/notebook/maternal_model.sav")
 
 
@@ -44,6 +46,7 @@ sign.saveCookies()
 
 
 
+# Set the page title (tab)
 st.set_page_config(page_title="Nurse GPT - An LLM-powered Streamlit app")
 
 
@@ -119,7 +122,7 @@ def generate_response(prompt):
             for key, value in female_data.items():   
                 
                 if (not bool(value)) or (value == "null") or (value == "unknown") or (value == "N/A"): 
-                    ai_response = app.check_information(prompt, "unknown", ai_response)
+                    ai_response = app.check_information(prompt, "Female", ai_response)
                     gender = app.get_gender(prompt, ai_response)
                     return ai_response   
 
@@ -141,7 +144,7 @@ def generate_response(prompt):
 
             for key, value in female_data.items():                        
                 value = output_dict["medical_symptoms"][0][key]
-                # If the value wasn't null copy to female data array
+                # If the value wasn't null, copy it to female data array
                 if (value) and (value!="unknown") and (value!="null") and (value!= "N/A"):
                     female_data[key] = output_dict["medical_symptoms"][0][key]
 
@@ -174,7 +177,7 @@ def generate_response(prompt):
                 # if the value was null, ask the user for more info.
                 for key, value in male_data.items():   
                     if (not bool(value)) or (value =="null") or (value=="unknown") or (value== "N/A"): 
-                        ai_response = app.check_information(prompt, "unknown", ai_response)
+                        ai_response = app.check_information(prompt, "Male", ai_response)
                         gender = app.get_gender(prompt, ai_response)
                         return ai_response   
 
@@ -207,7 +210,7 @@ def generate_response(prompt):
                         male_data["systolic_blood_pressure"], male_data["diastolic_blood_pressure"],male_data["cholesterol"], 
                         male_data["glucose"], string_to_num_dict[male_data["smoker"]], string_to_num_dict[male_data["alcohol"]]
                         , string_to_num_dict[male_data["activity"]] ]]
-                risk_val = model_female.predict(data)
+                risk_val = model_male.predict(data)
                 ai_response = app.risk_assessment(prompt, risk_val, gender)
                 gender = app.get_gender(prompt, ai_response)
                 male_data = {key: None for key in keys1}
