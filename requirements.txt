@@ -1,4 +1,7 @@
+kor
+openai
+langchain
 streamlit
+streamlit_chat
+streamlit_extras
 hugchat
-streamlit-chat
-streamlit-extras
