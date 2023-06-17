@@ -26,6 +26,30 @@ def printOutput(output):
 
 
 
+# Translate user's text to english
+def translate_to_english(input_text):
+    
+    template = """You are an intelligent AI bot that is able to translate the input text to english language if it is not in english
+    
+    INPUT TEXT:
+    {input_text}
+
+    YOUR RESPONSE:
+    """
+
+    prompt = PromptTemplate(
+    input_variables=["input_text"],
+    template= template,
+    )
+
+    final_prompt = prompt.format(input_text= f'{input_text}')
+    translated_txt = llm2(final_prompt)
+    return translated_txt
+    pass
+
+
+
+
 
 # Extract Medical Information From the User's Message (prompt)
 def data_extraction(input_text):
