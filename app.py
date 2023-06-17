@@ -27,7 +27,7 @@ def printOutput(output):
 
 
 
-# Extract Medical Information From the User's Message
+# Extract Medical Information From the User's Message (prompt)
 def data_extraction(input_text):
 
     Medical_Info_Schema = Object(
@@ -185,11 +185,11 @@ def data_extraction(input_text):
 # Check that all the required information was given
 def check_information(input_text, gender, AI_response):
 
-    template = """You are an AI medical bot your responsibility is to ask the user for medical symptoms if they ask you for the risk
-                    towards a disease, you are not able to help any any other field but to provide risk assessment for the cardiovascular
-                    diseases or the maternal diseases, in any other medical field you will not be helpful.
+    template = """You are an AI bot that would keep asking the person till he or she gives you all the required medical information only,
+               you can't help in any other field except the medical field to provide risk assessment for the cardiovascular diseases or the maternal diseases,
+               the amount of information would differ whether it is a female or male gender.
 
-            You have a minimum set of informations that need to be given to from the user for the risk assessment based on the 
+            You have a minimum set of informations that need to be given to you from the user for the risk assessment based on the 
             gender of the user, whether male or female.
 
             You should respond to the user in the same language, for example if the user messages you in arabic, you should respond
@@ -209,7 +209,7 @@ def check_information(input_text, gender, AI_response):
 
             Please make sure that all information is present for the relevant gender this is very important.
 
-            If the given gender was not unknown, don't ask the user about it.
+            If you know the gender of the user ask directly for the medical information.
 
             You are allowed to chat with the user but in the cardiovascular or maternal medical fields only.
 
@@ -237,11 +237,7 @@ def check_information(input_text, gender, AI_response):
     #response = conversation.predict(input = template)
 
     '''prompt = PromptTemplate(input_variables=["input_text", "gender"], template= template)      
-    final_prompt = prompt.format(input_text= f'{input_text}', gender= f'{gender}')
-
-    print (f"Final Prompt: {final_prompt}")
-    print (f"{llm2(final_prompt)}")'''
-    #return response
+    final_prompt = prompt.format(input_text= f'{input_text}', gender= f'{gender}') '''
     return response
     
 
@@ -251,7 +247,7 @@ def check_information(input_text, gender, AI_response):
 
 
 
-# Compute the risk to a certain disease
+# Compute the risk to a certain disease from the pre-made model
 def risk_assessment(input_text, risk_number, gender):
 
     template = """ You will be given a message from the user in number format, where number 1 represents high risk, number 0 represents 
