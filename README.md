@@ -47,3 +47,20 @@ ading run.ipynb…]()
 ## Frameworks Used
 - Python's Streamlit Framework (UI)
 - Python's Langchain Framework (Chat-bot)
+
+## Run The App
+- Download Python 3
+- Download VS code
+
+ 1-  Clone The project
+  ```ruby
+  git clone https://github.com/ahmed-elsarta/lablab-Hackathon-project.git
+  ```
+ 2-  Install packages
+  ```ruby
+  pip install -r requirements.txt
+  ```
+ 3-  Run the app
+  ```ruby
+  streamlit run streamlit_app.py
+  ```
